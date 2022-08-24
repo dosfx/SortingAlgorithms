@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.runWorker = new System.ComponentModel.BackgroundWorker();
-            this.renderBox = new System.Windows.Forms.PictureBox();
             this.shuffleLabel = new SortingAlgorithms.ActiveLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.renderBox)).BeginInit();
+            this.renderBox = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // runWorker
@@ -39,15 +38,6 @@
             this.runWorker.WorkerReportsProgress = true;
             this.runWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunWorker_DoWork);
             this.runWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.RunWorker_ProgressChanged);
-            // 
-            // renderBox
-            // 
-            this.renderBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.renderBox.Location = new System.Drawing.Point(12, 12);
-            this.renderBox.Name = "renderBox";
-            this.renderBox.Size = new System.Drawing.Size(600, 200);
-            this.renderBox.TabIndex = 0;
-            this.renderBox.TabStop = false;
             // 
             // shuffleLabel
             // 
@@ -60,6 +50,15 @@
             this.shuffleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.shuffleLabel.Click += new System.EventHandler(this.ShuffleLabel_Click);
             // 
+            // renderBox
+            // 
+            this.renderBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.renderBox.Location = new System.Drawing.Point(12, 12);
+            this.renderBox.Name = "renderBox";
+            this.renderBox.Size = new System.Drawing.Size(600, 200);
+            this.renderBox.TabIndex = 2;
+            this.renderBox.Visible = false;
+            // 
             // SortingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -71,7 +70,6 @@
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Name = "SortingForm";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.renderBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -79,8 +77,8 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker runWorker;
-        private System.Windows.Forms.PictureBox renderBox;
         private ActiveLabel shuffleLabel;
+        private System.Windows.Forms.Label renderBox;
     }
 }
 

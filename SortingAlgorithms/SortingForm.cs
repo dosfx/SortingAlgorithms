@@ -13,6 +13,7 @@ namespace SortingAlgorithms
 {
     public partial class SortingForm : Form
     {
+        private readonly EventWaitHandle waitHandle;
         private int[] sort;
         private Bitmap[] buffers;
         private int iBuf;
@@ -22,6 +23,7 @@ namespace SortingAlgorithms
         {
             DoubleBuffered = true;
             InitializeComponent();
+            waitHandle = new AutoResetEvent(false);
             sort = Enumerable.Range(1, 500).ToArray();
             iBuf = 0;
         }
@@ -44,7 +46,7 @@ namespace SortingAlgorithms
             }
 
             // present buffer
-            renderBox.Image = current;
+            Invalidate();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -52,6 +54,14 @@ namespace SortingAlgorithms
             base.OnLoad(e);
 
             Draw();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            e.Graphics.DrawImageUnscaled(buffers[iBuf], renderBox.Bounds);
+            waitHandle.Set();
         }
 
         protected override void OnResize(EventArgs e)
@@ -121,7 +131,7 @@ namespace SortingAlgorithms
         private void Algorithm_Update(object sender, UpdateEventArgs e)
         {
             runWorker.ReportProgress(0, e);
-            Thread.Sleep(10);
+            waitHandle.WaitOne();
         }
 
         private void RunWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
