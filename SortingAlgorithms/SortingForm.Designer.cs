@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.runWorker = new System.ComponentModel.BackgroundWorker();
-            this.shuffleLabel = new SortingAlgorithms.ActiveLabel();
             this.renderBox = new System.Windows.Forms.Label();
+            this.shuffleLabel = new SortingAlgorithms.ActiveLabel();
             this.SuspendLayout();
             // 
             // runWorker
@@ -38,6 +38,16 @@
             this.runWorker.WorkerReportsProgress = true;
             this.runWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunWorker_DoWork);
             this.runWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.RunWorker_ProgressChanged);
+            this.runWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.RunWorker_RunWorkerCompleted);
+            // 
+            // renderBox
+            // 
+            this.renderBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.renderBox.Location = new System.Drawing.Point(12, 12);
+            this.renderBox.Name = "renderBox";
+            this.renderBox.Size = new System.Drawing.Size(600, 200);
+            this.renderBox.TabIndex = 2;
+            this.renderBox.Visible = false;
             // 
             // shuffleLabel
             // 
@@ -49,15 +59,6 @@
             this.shuffleLabel.Text = "Shuffle";
             this.shuffleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.shuffleLabel.Click += new System.EventHandler(this.ShuffleLabel_Click);
-            // 
-            // renderBox
-            // 
-            this.renderBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.renderBox.Location = new System.Drawing.Point(12, 12);
-            this.renderBox.Name = "renderBox";
-            this.renderBox.Size = new System.Drawing.Size(600, 200);
-            this.renderBox.TabIndex = 2;
-            this.renderBox.Visible = false;
             // 
             // SortingForm
             // 

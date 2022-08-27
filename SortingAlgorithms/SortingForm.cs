@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -28,20 +29,32 @@ namespace SortingAlgorithms
             iBuf = 0;
         }
 
-        private void Draw()
+        private void Draw(UpdateEventArgs update = null)
         {
             iBuf = (iBuf + 1) % 2;
             Bitmap current = buffers[iBuf];
-            float barWidth = current.Width / (float)sort.Length;
+            float barWidth = graphBounds.Width / (float)sort.Length;
             using (Graphics g = Graphics.FromImage(current))
             using (SolidBrush brush = new SolidBrush(Color.White))
             {
                 g.Clear(Color.Black);
+                if (update != null)
+                {
+                    g.Transform = new Matrix(1, 0, 0, 1, graphBounds.Left + (barWidth * update.Cursor), graphBounds.Bottom);
+                    g.FillPolygon(brush, new[]
+                    {
+                        new PointF(0, 0),
+                        new PointF(10, 10),
+                        new PointF(-10, 10),
+                    });
+                }
+
+                g.Transform = new Matrix(1, 0, 0, 1, graphBounds.Left, graphBounds.Top);
                 for (int i = 0; i < sort.Length; i++)
                 {
                     float y = sort[i] / (float)sort.Length;
                     brush.Color = FromHue(sort[i], sort.Length);
-                    g.FillRectangle(brush, i * barWidth, current.Height * (1 - y), barWidth, current.Height * y);
+                    g.FillRectangle(brush, i * barWidth, graphBounds.Height * (1 - y), barWidth, graphBounds.Height * y);
                 }
             }
 
@@ -68,7 +81,7 @@ namespace SortingAlgorithms
         {
             base.OnResize(e);
 
-            graphBounds = new Rectangle(10, 10, renderBox.Width - 20, renderBox.Height - 20);
+            graphBounds = new Rectangle(10, 0, renderBox.Width - 20, renderBox.Height - 10);
             buffers = new[] {
                 new Bitmap(renderBox.Width, renderBox.Height),
                 new Bitmap(renderBox.Width, renderBox.Height),
@@ -136,7 +149,13 @@ namespace SortingAlgorithms
 
         private void RunWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Draw();
+            Draw((UpdateEventArgs)e.UserState);
+        }
+
+        private void RunWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // one more draw to clean up after the run
+            Draw(null);
         }
 
         private void ShuffleLabel_Click(object sender, EventArgs e)
