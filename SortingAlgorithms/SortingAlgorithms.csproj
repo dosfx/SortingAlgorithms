@@ -50,6 +50,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Algorithm.cs" />
+    <Compile Include="BubbleSort.cs" />
     <Compile Include="Shuffle.cs" />
     <Compile Include="SortingForm.cs">
       <SubType>Form</SubType>

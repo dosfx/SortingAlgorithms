@@ -9,6 +9,7 @@ namespace SortingAlgorithms
     internal abstract class Algorithm
     {
         private int[] array;
+        private int cursor;
         private int compares;
         private int swaps;
 
@@ -17,6 +18,7 @@ namespace SortingAlgorithms
         public void Run(int[] array)
         {
             this.array = array;
+            cursor = -1;
             compares = 0;
             swaps = 0;
             Run();
@@ -28,7 +30,16 @@ namespace SortingAlgorithms
 
         protected void Cursor(int i)
         {
-            Update?.Invoke(this, new UpdateEventArgs() { Cursor = i });
+            if (cursor != i)
+            {
+                cursor = i;
+                DoUpdate();
+            }
+        }
+
+        private void DoUpdate()
+        {
+            Update?.Invoke(this, new UpdateEventArgs() { Cursor = cursor });
         }
 
         protected bool Eq(int i1, int i2)
@@ -71,6 +82,7 @@ namespace SortingAlgorithms
         {
             (array[i2], array[i1]) = (array[i1], array[i2]);
             swaps++;
+            DoUpdate();
         }
     }
 }

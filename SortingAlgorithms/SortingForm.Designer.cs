@@ -31,6 +31,7 @@
             this.runWorker = new System.ComponentModel.BackgroundWorker();
             this.renderBox = new System.Windows.Forms.Label();
             this.shuffleLabel = new SortingAlgorithms.ActiveLabel();
+            this.sortLabel = new SortingAlgorithms.ActiveLabel();
             this.SuspendLayout();
             // 
             // runWorker
@@ -60,12 +61,24 @@
             this.shuffleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.shuffleLabel.Click += new System.EventHandler(this.ShuffleLabel_Click);
             // 
+            // sortLabel
+            // 
+            this.sortLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sortLabel.Location = new System.Drawing.Point(287, 298);
+            this.sortLabel.Name = "sortLabel";
+            this.sortLabel.Size = new System.Drawing.Size(75, 23);
+            this.sortLabel.TabIndex = 3;
+            this.sortLabel.Text = "Sort";
+            this.sortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sortLabel.Click += new System.EventHandler(this.SortLabel_Click);
+            // 
             // SortingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sortLabel);
             this.Controls.Add(this.shuffleLabel);
             this.Controls.Add(this.renderBox);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -80,6 +93,7 @@
         private System.ComponentModel.BackgroundWorker runWorker;
         private ActiveLabel shuffleLabel;
         private System.Windows.Forms.Label renderBox;
+        private ActiveLabel sortLabel;
     }
 }
 

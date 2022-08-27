@@ -25,7 +25,7 @@ namespace SortingAlgorithms
             DoubleBuffered = true;
             InitializeComponent();
             waitHandle = new AutoResetEvent(false);
-            sort = Enumerable.Range(1, 500).ToArray();
+            sort = Enumerable.Range(1, 100).ToArray();
             iBuf = 0;
         }
 
@@ -38,7 +38,7 @@ namespace SortingAlgorithms
             using (SolidBrush brush = new SolidBrush(Color.White))
             {
                 g.Clear(Color.Black);
-                if (update != null)
+                if (update != null && 0 <= update.Cursor && update.Cursor < sort.Length)
                 {
                     g.Transform = new Matrix(1, 0, 0, 1, graphBounds.Left + (barWidth * update.Cursor), graphBounds.Bottom);
                     g.FillPolygon(brush, new[]
@@ -161,6 +161,11 @@ namespace SortingAlgorithms
         private void ShuffleLabel_Click(object sender, EventArgs e)
         {
             runWorker.RunWorkerAsync(new Shuffle());
+        }
+
+        private void SortLabel_Click(object sender, EventArgs e)
+        {
+            runWorker.RunWorkerAsync(new BubbleSort());
         }
     }
 }
