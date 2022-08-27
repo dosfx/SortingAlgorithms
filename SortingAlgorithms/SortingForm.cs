@@ -26,7 +26,7 @@ namespace SortingAlgorithms
             DoubleBuffered = true;
             InitializeComponent();
             waitHandle = new AutoResetEvent(false);
-            sort = Enumerable.Range(1, 100).ToArray();
+            sort = Enumerable.Range(0, 200).ToArray();
             hues = sort.Select(i => FromHue(i, sort.Length)).ToArray();
             iBuf = 0;
         }
@@ -54,9 +54,9 @@ namespace SortingAlgorithms
                 g.Transform = new Matrix(1, 0, 0, 1, graphBounds.Left, graphBounds.Top);
                 for (int i = 0; i < sort.Length; i++)
                 {
-                    float y = sort[i] / (float)sort.Length;
+                    float height = (((sort[i] / (float)sort.Length) * 0.8f) + 0.2f) * graphBounds.Height;
                     brush.Color = hues[sort[i]];
-                    g.FillRectangle(brush, i * barWidth, graphBounds.Height * (1 - y), barWidth, graphBounds.Height * y);
+                    g.FillRectangle(brush, i * barWidth, graphBounds.Height - height, barWidth, height);
                 }
             }
 
