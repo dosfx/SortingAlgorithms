@@ -16,6 +16,7 @@ namespace SortingAlgorithms
     {
         private readonly EventWaitHandle waitHandle;
         private int[] sort;
+        private Color[] hues;
         private Bitmap[] buffers;
         private int iBuf;
         private Rectangle graphBounds;
@@ -26,6 +27,7 @@ namespace SortingAlgorithms
             InitializeComponent();
             waitHandle = new AutoResetEvent(false);
             sort = Enumerable.Range(1, 100).ToArray();
+            hues = sort.Select(i => FromHue(i, sort.Length)).ToArray();
             iBuf = 0;
         }
 
@@ -53,7 +55,7 @@ namespace SortingAlgorithms
                 for (int i = 0; i < sort.Length; i++)
                 {
                     float y = sort[i] / (float)sort.Length;
-                    brush.Color = FromHue(sort[i], sort.Length);
+                    brush.Color = hues[sort[i]];
                     g.FillRectangle(brush, i * barWidth, graphBounds.Height * (1 - y), barWidth, graphBounds.Height * y);
                 }
             }
