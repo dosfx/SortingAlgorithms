@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActiveLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Algorithm.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="Shuffle.cs" />
@@ -85,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DarkControls\DarkControls.csproj">
+      <Project>{69c9da3e-926b-4f5a-ad60-9d3ff1f03969}</Project>
+      <Name>DarkControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

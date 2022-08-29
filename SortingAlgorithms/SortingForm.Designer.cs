@@ -30,8 +30,8 @@
         {
             this.runWorker = new System.ComponentModel.BackgroundWorker();
             this.renderBox = new System.Windows.Forms.Label();
-            this.shuffleLabel = new SortingAlgorithms.ActiveLabel();
-            this.sortLabel = new SortingAlgorithms.ActiveLabel();
+            this.shuffleLabel = new DarkControls.ActiveLabel();
+            this.sortLabel = new DarkControls.ActiveLabel();
             this.SuspendLayout();
             // 
             // runWorker
@@ -46,7 +46,7 @@
             this.renderBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.renderBox.Location = new System.Drawing.Point(12, 12);
             this.renderBox.Name = "renderBox";
-            this.renderBox.Size = new System.Drawing.Size(600, 200);
+            this.renderBox.Size = new System.Drawing.Size(600, 276);
             this.renderBox.TabIndex = 2;
             this.renderBox.Visible = false;
             // 
@@ -91,9 +91,9 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker runWorker;
-        private ActiveLabel shuffleLabel;
+        private DarkControls.ActiveLabel shuffleLabel;
         private System.Windows.Forms.Label renderBox;
-        private ActiveLabel sortLabel;
+        private DarkControls.ActiveLabel sortLabel;
     }
 }
 

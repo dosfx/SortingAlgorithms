@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "SortingAlgorithms\SortingAlgorithms.csproj", "{A58BAFD9-3EBB-499F-84CC-15D2CEF07111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkControls", "DarkControls\DarkControls.csproj", "{69C9DA3E-926B-4F5A-AD60-9D3FF1F03969}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A58BAFD9-3EBB-499F-84CC-15D2CEF07111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A58BAFD9-3EBB-499F-84CC-15D2CEF07111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A58BAFD9-3EBB-499F-84CC-15D2CEF07111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69C9DA3E-926B-4F5A-AD60-9D3FF1F03969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69C9DA3E-926B-4F5A-AD60-9D3FF1F03969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69C9DA3E-926B-4F5A-AD60-9D3FF1F03969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69C9DA3E-926B-4F5A-AD60-9D3FF1F03969}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

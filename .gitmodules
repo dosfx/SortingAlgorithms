@@ -1,0 +1,3 @@
+[submodule "DarkControls"]
+	path = DarkControls
+	url = git@github.com:dosfx/DarkControls.git
